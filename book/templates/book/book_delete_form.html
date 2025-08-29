@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .delete-container{width:50%;text-align: center;margin:20px auto}
+        .book-info{margin:20px 0}
+        .btn{padding:8px 15px;text-decoration: none;}
+        .btn-delete{background-color: darkred;color:black}
+        .btn-cancel{background-color: aqua;color:white}
+
+    </style>
+</head>
+<body>
+    <div class="delete-container">
+    <h1>Delete Book</h1>
+    <p>Do you really want to delete book</p>
+    <div class="book-info">
+        <strong>{{book.title}}</strong> by {{book.author}}
+    </div> 
+    <form method="POST">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-delete">Delete</button>
+        <a href="{% url 'books'%}" class="btn btn-cancel">cancel</a>
+
+    </form>
+    </div>
+</body>
+</html>

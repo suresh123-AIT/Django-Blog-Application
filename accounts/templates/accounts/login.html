@@ -1,0 +1,22 @@
+    {% extends 'base.html' %}
+    {% block body%}
+    <h1 class='text-center'>Login</h1>
+    {{form.non_field_errors}}
+    <div class="container">
+        <form  method="POST" >
+            {% csrf_token %}
+            {%for field in form %} 
+                <div class="mb-3">
+                <label class="form-label" id="{{field.id_for_label}}">{{field.label}}</label>
+                {{field}}
+                {% if field.errors%}
+                    <div class="invalid-feedback">
+                    {{field.errors}}
+                    </div>
+                {% endif %}
+                </div>
+            {%endfor%}
+            <button type="submit" class="btn btn-primary my-4">Submit</button>
+        </form>
+    </div>
+    {% endblock body %}
