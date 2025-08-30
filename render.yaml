@@ -1,0 +1,16 @@
+# render.yaml
+services:
+  - type: web
+    name: blogsphere-django
+    env: python
+    plan: free
+    buildCommand: "./build.sh"
+    startCommand: "gunicorn your_project_name.wsgi:application"
+    envVars:
+      - key: DEBUG
+        value: "False"
+      - key: SECRET_KEY
+        generateValue: true
+      - key: WEB_URL
+        value: "https://your-app-name.onrender.com"
+    # You will add your database URL here later
